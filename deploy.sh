@@ -13,6 +13,7 @@ if [ -d "Tools/__vscode" ]; then
     echo "Copying VSCode configuration to workspace root..."
     cp -r Tools/__vscode ../.vscode
     cp  Tools/build.sh ../build.sh
+    chmod 777 ../build.sh
 else
     echo "Error: Tools/_vscode directory not found!"
     exit 1

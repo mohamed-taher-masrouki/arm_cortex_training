@@ -40,7 +40,7 @@
  * from optimizing accesses away, which is useful for debugging
  * and observing behavior in a debugger.
  */
-_IO uint32_t u32var = 0;
+volatile uint32_t u32var = 0;
 
 
 void SystemInit(void)
