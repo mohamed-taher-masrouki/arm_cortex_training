@@ -1,0 +1,78 @@
+/**
+ * MIT License
+ *
+ * Copyright (c) 2026
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+/**
+ * @file main.c
+ * @brief Minimal STM32F7 application example.
+ *
+ * This file contains a simple application that increments
+ * a global variable inside a bounded loop and then enters
+ * an infinite idle loop.
+ */
+
+#include "stm32f7xx.h"
+
+/**
+ * @brief Global test variable.
+ *
+ * This variable is declared as volatile to prevent the compiler
+ * from optimizing accesses away, which is useful for debugging
+ * and observing behavior in a debugger.
+ */
+volatile uint32_t u32var = 0;
+
+/**
+ * @brief Application entry point.
+ *
+ * The main function increments the global variable `u32var`
+ * 100 times and then enters an infinite loop.
+ *
+ * @return int This function never returns.
+ */
+int main(void)
+{
+    /**
+     * @brief Increment u32var 100 times.
+     */
+    for (uint32_t i = 0U; i < 100U; i++)
+    {
+        u32var++;
+    }
+
+    /**
+     * @brief Infinite loop.
+     *
+     * In embedded systems, the main function typically does not
+     * return. The CPU remains here when no further processing
+     * is required.
+     */
+    while (1)
+    {
+        /* Idle loop */
+    }
+
+    /* This return is never reached but keeps the compiler satisfied */
+    return 0;
+}
+
