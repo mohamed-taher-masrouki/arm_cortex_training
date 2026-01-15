@@ -1,0 +1,51 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+
+        {
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceRoot}/Demos/HandsOn/build/HandsOn.elf",
+            "name": "Debug with ST-Util",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "servertype": "openocd",
+            "configFiles": [
+                 "interface/stlink.cfg",
+                 "target/stm32f7x.cfg"
+            ],
+            "gdbPath": "gdb-multiarch",
+    "openOCDLaunchCommands": [
+        "adapter speed 8000"
+    ],
+            "armToolchainPath": "/usr/bin", // Adjust this to where your toolchain is
+            "targetId": "stm32f76",
+            "postLaunchCommands": [
+                "break main",
+                "continue"
+            ]          
+        },
+        {
+            "name": "Renode GDB Debug",
+            "cwd": "${workspaceRoot}/Demos/HandsOn/build",
+            "executable": "${workspaceRoot}/Demos/HandsOn/build/HandsOn.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "external",
+            "gdbTarget": "localhost:3333",
+            "gdbPath": "gdb-multiarch",
+            "armToolchainPath": "/usr/bin", // Adjust this to where your toolchain is
+            "targetId": "stm32f76",
+            "preLaunchCommands": [
+                "set mem inaccessible-by-default off",
+                "monitor start"
+            ],
+            "postLaunchCommands": [
+                "break main",
+                "continue"
+            ]
+        }
+    ]
+}
