@@ -1,11 +1,9 @@
 {
     "version": "0.2.0",
-    "configurations": [
-        
-
+    "configurations": [  
         {
             "cwd": "${workspaceFolder}",
-            "executable": "${workspaceRoot}/Demos/HandsOn/build/HandsOn.elf",
+            "executable": "${workspaceRoot}/Demos/HandsOn_CortexM7/build/HandsOn.elf",
             "name": "Debug with ST-Util",
             "request": "launch",
             "type": "cortex-debug",
@@ -17,9 +15,9 @@
                  "target/stm32f7x.cfg"
             ],
             "gdbPath": "gdb-multiarch",
-    "openOCDLaunchCommands": [
-        "adapter speed 8000"
-    ],
+            "openOCDLaunchCommands": [
+                 "adapter speed 8000"
+            ],
             "armToolchainPath": "/usr/bin", // Adjust this to where your toolchain is
             "targetId": "stm32f76",
             "postLaunchCommands": [
@@ -28,9 +26,9 @@
             ]          
         },
         {
-            "name": "Renode GDB Debug",
-            "cwd": "${workspaceRoot}/Demos/HandsOn/build",
-            "executable": "${workspaceRoot}/Demos/HandsOn/build/HandsOn.elf",
+            "name": "Debug with Renode",
+            "cwd": "${workspaceRoot}/Demos/HandsOn_CortexM7/build",
+            "executable": "${workspaceRoot}/Demos/HandsOn_CortexM7/build/HandsOn.elf",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "external",

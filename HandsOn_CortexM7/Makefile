@@ -32,11 +32,11 @@ BUILD_DIR = build
 ######################################
 # C sources
 C_SOURCES =  \
-Core/Src/main.c \ 
+Core/Src/main.c \
 
 # ASM sources
-ASM_SOURCES =  \
-Core/Startup/startup_stm32f767xx.s
+ASM_SOURCES = \
+../../Platforms/STM32CubeF7/Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/gcc/startup_stm32f767xx.s
 
 # ASMM sources
 ASMM_SOURCES =
@@ -94,8 +94,8 @@ AS_INCLUDES =
 # C includes
 C_INCLUDES =  \
 -ICore/Inc \
--I../../Platform/STM32CubeF7/Drivers/CMSIS/Include
--I../../Platform/STM32CubeF7/Drivers/CMSIS/Include
+-I../../Platforms/STM32CubeF7/Drivers/CMSIS/Include \
+-I../../Platforms/STM32CubeF7/Drivers/CMSIS/Device/ST/STM32F7xx/Include
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
